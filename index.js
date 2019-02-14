@@ -33,8 +33,8 @@ passport.deserializeUser(function(obj, done) {
 passport.use(
   new SteamStrategy(
     {
-      returnURL: "http://localhost:3000/auth/steam/return",
-      realm: "http://localhost:3000/",
+      returnURL: "https://steam-picker.herokuapp.com/auth/steam/return",
+      realm: "https://steam-picker.herokuapp.com/",
       apiKey: process.env.STEAM_WEB_KEY
     },
     function(identifier, profile, done) {

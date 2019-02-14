@@ -98,7 +98,7 @@ app.get("/api/logout", function(req, res) {
 // See views/auth.js for authentication routes
 app.use("/auth", authRoutes);
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If

@@ -67,6 +67,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static(path.join(__dirname, "client/build")));
+
 // Test API to send whatevs
 app.get("/api/test", function(req, res) {
   res.json([{ user: req.user, test: "stuff" }]);

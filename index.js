@@ -6,6 +6,7 @@ var express = require("express"),
   passport = require("passport"),
   util = require("util"),
   session = require("express-session"),
+  path = require("path"),
   SteamStrategy = require("./lib/passport-steam").Strategy,
   authRoutes = require("./lib/auth");
 

@@ -49,7 +49,7 @@ function Navigation(props) {
           {user === null ? (
             <Button href="/auth/steam">
               <img
-                src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png"
+                src="http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png"
                 alt="sign in logo"
               />
             </Button>

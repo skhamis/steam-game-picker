@@ -68,20 +68,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-//production mode
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-  //
-  app.get("*", (req, res) => {
-    res.sendfile(path.join((__dirname = "client/build/index.html")));
-  });
-} else {
-  //build mode
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/client/public/index.html"));
-  });
-}
-
 // Test API to send whatevs
 app.get("/api/test", function(req, res) {
   res.json([{ user: req.user, test: "stuff" }]);
@@ -112,6 +98,20 @@ app.get("/api/logout", function(req, res) {
 
 // See views/auth.js for authentication routes
 app.use("/auth", authRoutes);
+
+//production mode
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+  //
+  app.get("*", (req, res) => {
+    res.sendfile(path.join((__dirname = "client/build/index.html")));
+  });
+} else {
+  //build mode
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/public/index.html"));
+  });
+}
 
 app.listen(process.env.PORT || 3001);
 

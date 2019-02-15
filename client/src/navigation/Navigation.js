@@ -9,14 +9,14 @@ import Typography from "@material-ui/core/Typography";
 
 import UserAccount from "../account/UserAccount";
 
-const styles = theme => ({
+const styles = {
   navBarSpacer: {
     height: 75
   },
   grow: {
     flexGrow: 1
   }
-});
+};
 
 function Navigation(props) {
   const { classes } = props;

@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import gameImage from "../images/game_example.png";
 import Link from "@material-ui/core/Link";
@@ -9,6 +8,7 @@ import Link from "@material-ui/core/Link";
 function Landing() {
   return (
     <Grid
+      style={{ padding: 20, textAlign: "center" }}
       container
       justify="center"
       direction="column"
@@ -17,7 +17,6 @@ function Landing() {
     >
       <Grid item>
         <Typography variant="h4">
-          {" "}
           Getting chills deciding the next game to play after the Winter Sale?
         </Typography>
       </Grid>
@@ -54,7 +53,7 @@ function Landing() {
       <Grid item>
         <Typography>Example...</Typography>
         <Paper>
-          <img src={gameImage} height={500} />
+          <img style={{ maxWidth: "100%" }} src={gameImage} alt="example" />
         </Paper>
       </Grid>
     </Grid>

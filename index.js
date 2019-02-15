@@ -36,6 +36,9 @@ passport.use(
     {
       returnURL: "https://steam-picker.herokuapp.com/auth/steam/return",
       realm: "https://steam-picker.herokuapp.com/",
+      //UNCOMMENT THEN FOR LOCAL BUILDS
+      //returnURL: "http://localhost:3000/auth/steam/return",
+      //realm: "http://localhost:3000/",
       apiKey: process.env.STEAM_WEB_KEY
     },
     function(identifier, profile, done) {

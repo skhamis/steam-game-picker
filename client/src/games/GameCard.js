@@ -25,7 +25,7 @@ function GameCard(props) {
         <CardMedia
           className={classes.media}
           image={
-            "https://media.steampowered.com/steamcommunity/public/images/apps/" +
+            "http://media.steampowered.com/steamcommunity/public/images/apps/" +
             game.appid +
             "/" +
             game.img_logo_url +

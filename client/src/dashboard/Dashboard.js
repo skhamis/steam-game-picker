@@ -5,6 +5,7 @@ import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Landing from "../landing/Landing";
+import { withRouter } from "react-router-dom";
 
 const styles = {
   divider: {
@@ -37,8 +38,11 @@ function Dashboard(props) {
     setGameList(json[0].gamelist);
   }
   const { classes } = props;
+  const { state } = props.location;
 
-  if (user === null) {
+  //Note: the != is purposeful to not be !== due to state sometimes being undefined
+  //Find a better way to handle this
+  if (user === null || (state != null && state.loggedOut)) {
     return <Landing />;
   }
   return (
@@ -53,4 +57,4 @@ function Dashboard(props) {
   );
 }
 
-export default withStyles(styles)(Dashboard);
+export default withRouter(withStyles(styles)(Dashboard));

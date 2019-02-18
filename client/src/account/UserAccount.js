@@ -25,7 +25,11 @@ function UserAccount(props) {
 
   const handleLogout = async () => {
     await fetch("/api/logout");
-    props.history.push("/");
+    props.history.push({
+      pathname: "/",
+      state: { loggedOut: true }
+    });
+    props.onLogout();
   };
 
   const handleClose = () => {

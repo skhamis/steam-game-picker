@@ -31,14 +31,21 @@ passport.deserializeUser(function(obj, done) {
 //   Strategies in passport require a `validate` function, which accept
 //   credentials (in this case, an OpenID identifier and profile), and invoke a
 //   callback with a user object.
+const returnURL =
+  process.env.NODE_ENV === "production"
+    ? "https://steam-picker.herokuapp.com/auth/steam/return"
+    : "http://localhost:3000/auth/steam/return";
+
+const realm =
+  process.env.NODE_ENV === "production"
+    ? "https://steam-picker.herokuapp.com/"
+    : "http://localhost:3000/auth/steam/return";
+
 passport.use(
   new SteamStrategy(
     {
-      returnURL: "https://steam-picker.herokuapp.com/auth/steam/return",
-      realm: "https://steam-picker.herokuapp.com/",
-      //UNCOMMENT THEN FOR LOCAL BUILDS
-      //returnURL: "http://localhost:3000/auth/steam/return",
-      //realm: "http://localhost:3000/",
+      returnURL: returnURL,
+      realm: realm,
       apiKey: process.env.STEAM_WEB_KEY
     },
     function(identifier, profile, done) {
@@ -96,7 +103,6 @@ app.get("/api/ownedgames", ensureAuthenticated, function(req, res) {
 
 app.get("/api/logout", function(req, res) {
   req.logout();
-  //res.redirect("/");
 });
 
 // See views/auth.js for authentication routes
@@ -127,5 +133,4 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect("/");
 }

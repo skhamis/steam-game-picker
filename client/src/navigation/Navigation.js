@@ -24,14 +24,18 @@ function Navigation(props) {
 
   useEffect(() => {
     fetchUsername();
-  }, []);
+  }, [user]);
 
   async function fetchUsername() {
     const res = await fetch("/api/account");
-    if (res !== null) {
+    if (user === null) {
       const json = await res.json();
       setUser(json[0].user);
     }
+  }
+
+  function onLogout() {
+    setUser(null);
   }
 
   return (
@@ -54,7 +58,7 @@ function Navigation(props) {
               />
             </Button>
           ) : (
-            <UserAccount user={user} />
+            <UserAccount user={user} onLogout={onLogout} />
           )}
         </Toolbar>
       </AppBar>

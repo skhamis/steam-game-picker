@@ -19,6 +19,8 @@ const styles = {
 
 function GameCard(props) {
   const { classes, game } = props;
+
+  const playtime_hours = Math.round(game.playtime_forever / 60);
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -35,7 +37,7 @@ function GameCard(props) {
         <CardContent>
           <Typography component="h2">{game.name}</Typography>
           <Typography variant="subtitle2" gutterBottom>
-            Hours: {numberWithCommas(game.playtime_forever)}
+            Hours: {numberWithCommas(playtime_hours)}
           </Typography>
         </CardContent>
       </CardActionArea>

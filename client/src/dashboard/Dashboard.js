@@ -41,7 +41,7 @@ function Dashboard(props) {
     const json = await res
       .json()
       .then(responseJson => {
-        setGameList(json[0].gamelist);
+        setGameList(responseJson[0].gamelist);
         setIsLoading(false);
       })
       .catch(error => {

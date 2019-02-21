@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import gameImage from "../images/game_example.png";
-import Link from "@material-ui/core/Link";
+import Button from "@material-ui/core/Button";
 
 function Landing() {
   return (
@@ -37,18 +37,14 @@ function Landing() {
         </Typography>
       </Grid>
       <Grid item>
-        <Typography>
-          <Link
-            href={
-              "https://support.steampowered.com/kb_article.php?ref=4113-YUDH-6401"
-            }
-            target="_blank"
-            rel="noopener"
-            color="secondary"
-          >
-            Steam article on setting profile to public
-          </Link>
-        </Typography>
+        <Button
+          variant="contained"
+          href="https://support.steampowered.com/kb_article.php?ref=4113-YUDH-6401"
+          target="_blank"
+          rel="noopener"
+        >
+          Steam article on setting profile to public Link
+        </Button>
       </Grid>
       <Grid item>
         <Typography>Example...</Typography>

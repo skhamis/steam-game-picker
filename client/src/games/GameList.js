@@ -3,9 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import GameCard from "./GameCard";
 
 function GameList({ gameList }) {
-  if (gameList === null) {
-    return null;
-  }
   return (
     <div>
       <Grid container spacing={24} justify="center">

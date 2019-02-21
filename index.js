@@ -103,6 +103,7 @@ app.get("/api/ownedgames", ensureAuthenticated, function(req, res) {
 
 app.get("/api/logout", function(req, res) {
   req.logout();
+  res.redirect("/");
 });
 
 // See views/auth.js for authentication routes
@@ -133,4 +134,6 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
+
+  res.redirect("/");
 }

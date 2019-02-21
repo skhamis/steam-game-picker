@@ -6,10 +6,6 @@ import Typography from "@material-ui/core/Typography";
 
 function RandomPicker({ gameList }) {
   const [count, getNewGame] = useState(0);
-
-  if (gameList === null) {
-    return <div />;
-  }
   const game =
     gameList.games[Math.floor(Math.random() * gameList.games.length)];
   return (

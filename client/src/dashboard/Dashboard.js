@@ -6,6 +6,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Landing from "../landing/Landing";
 import { withRouter } from "react-router-dom";
+import Error from "../error/Error";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from "@material-ui/core/Grid";
 
 const styles = {
   divider: {
@@ -20,6 +23,7 @@ const styles = {
 function Dashboard(props) {
   const [user, setUser] = useState(null);
   const [gameList, setGameList] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchUser();
@@ -34,16 +38,35 @@ function Dashboard(props) {
 
   async function fetchGames() {
     const res = await fetch("/api/ownedgames");
-    const json = await res.json();
-    setGameList(json[0].gamelist);
+    const json = await res
+      .json()
+      .then(responseJson => {
+        setGameList(json[0].gamelist);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        setIsLoading(false);
+        console.log(error);
+      });
   }
   const { classes } = props;
   const { state } = props.location;
+
+  if (isLoading) {
+    return (
+      <Grid container justify="center" alignItems="center">
+        <CircularProgress color="secondary" />
+      </Grid>
+    );
+  }
 
   //Note: the != is purposeful to not be !== due to state sometimes being undefined
   //Find a better way to handle this
   if (user === null || (state != null && state.loggedOut)) {
     return <Landing />;
+  }
+  if (gameList === null || !gameList.hasOwnProperty("games")) {
+    return <Error />;
   }
   return (
     <div>
